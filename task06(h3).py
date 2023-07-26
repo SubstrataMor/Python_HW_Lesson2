@@ -10,3 +10,14 @@
 # Постарайтесь найти самое оптимальное решение.
 # Результат представьте в виде списка (не забудьте отсортировать по возрастанию).
 
+def all_divisors(number):
+    divisors = []
+    for i in range(1, int(number**0.5) + 1):    # чтобы уменьшить количество итераций перебираем числа только до корня основного числа
+        if number % i == 0:
+            divisors.append(i)
+            if i != number // i:
+                divisors.append(number // i)
+    return sorted(divisors)
+number = int(input('Введите число: '))
+divisors = all_divisors(number)
+print(divisors)

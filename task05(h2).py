@@ -8,3 +8,24 @@
 # юзаем библиотеки random и time
 # предикаты НЕ ЗАДАЕМ как целое число!
 
+import random
+import time
+
+def evaluate_expression(predicates):
+    result = True
+    for predicate in predicates:
+        result = result or predicate
+    return not result
+
+def test_expression():
+    start_time = time.time()
+    for _ in range(100):
+        num_predicates = random.randint(3, 15)
+        predicates = [random.choice([True, False]) for _ in range(num_predicates)]
+        evaluate_expression(predicates)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return execution_time
+
+execution_time = test_expression()
+print(f"Общее время выполнения программы: {execution_time} секунд.")
